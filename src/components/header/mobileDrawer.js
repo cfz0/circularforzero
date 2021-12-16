@@ -6,6 +6,7 @@ import { DrawerContext } from "contexts/drawer/drawer.context";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import { Link } from "components/link";
 import menuItems from "./header.data";
+import { useRouter } from "next/router";
 
 const MobileDrawer = () => {
   const { state, dispatch } = useContext(DrawerContext);
@@ -16,6 +17,8 @@ const MobileDrawer = () => {
       type: "TOGGLE",
     });
   }, [dispatch]);
+
+  const router = useRouter();
 
   return (
     <Drawer
@@ -42,7 +45,11 @@ const MobileDrawer = () => {
           </Box>
 
           <Box sx={styles.menuFooter}>
-            <Button variant="primary" sx={styles.button}>
+            <Button
+              variant="primary"
+              sx={styles.button}
+              onClick={() => router.push("/donate")}
+            >
               Donate Now
             </Button>
           </Box>

@@ -43,7 +43,7 @@ const MobileDrawer = () => {
 
           <Box sx={styles.menuFooter}>
             <Button variant="primary" sx={styles.button}>
-              Try for Free
+              Donate Now
             </Button>
           </Box>
         </Box>
@@ -125,7 +125,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     py: "0",
-    backgroundColor: "#02073E",
+    backgroundColor: "#00897B",
     color: "#fff",
   },
 };

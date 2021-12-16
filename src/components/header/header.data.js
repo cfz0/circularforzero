@@ -1,23 +1,14 @@
 export default [
   {
-    path: "banner",
+    path: "/",
     label: "Home",
   },
   {
-    path: "banndsser",
-    label: "Home",
+    path: "/team",
+    label: "Team",
   },
   {
-    path: "bansdsner",
-    label: "Home",
-  },
-
-  {
-    path: "bddanner",
-    label: "Home",
-  },
-  {
-    path: "banndder",
-    label: "Home",
+    path: "/about",
+    label: "About",
   },
 ];

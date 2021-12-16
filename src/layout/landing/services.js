@@ -2,6 +2,7 @@
 import { Box, Grid, Heading, Text } from "theme-ui";
 import Image from "components/image";
 import { LearnMore } from "components/link";
+import Fade from "react-reveal/Fade";
 
 const data = {
   services: [
@@ -39,29 +40,32 @@ const data = {
 const Services = () => {
   return (
     <Box as="section" id="services" sx={styles.section}>
-      <SectionHead
-        slogan="Want to get involved?"
-        title="Lorem ipsum dolor sit amet"
-      />
-      <div className="w-full flex justify-center">
-        <Grid sx={styles.serviceGrid} className="shadow-2xl border px-10">
-          {data.services.map((service, i) => (
-            <Box sx={styles.service} key={i}>
-              <Box as="figure">
-                <Image
-                  width="64"
-                  height="64"
-                  src={service.icon}
-                  alt={service.title}
-                />
+      <Fade bottom>
+        <SectionHead
+          slogan="Want to get involved?"
+          title="Lorem ipsum dolor sit amet"
+        />
+
+        <div className="w-full flex justify-center">
+          <Grid sx={styles.serviceGrid} className="shadow-2xl border px-10">
+            {data.services.map((service, i) => (
+              <Box sx={styles.service} key={i}>
+                <Box as="figure">
+                  <Image
+                    width="64"
+                    height="64"
+                    src={service.icon}
+                    alt={service.title}
+                  />
+                </Box>
+                <Heading as="h4">{service.title}</Heading>
+                <Text as="p">{service.desc}</Text>
+                <LearnMore path={service.link} />
               </Box>
-              <Heading as="h4">{service.title}</Heading>
-              <Text as="p">{service.desc}</Text>
-              <LearnMore path={service.link} />
-            </Box>
-          ))}
-        </Grid>
-      </div>
+            ))}
+          </Grid>
+        </div>
+      </Fade>
     </Box>
   );
 };

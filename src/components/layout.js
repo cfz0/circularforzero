@@ -37,7 +37,6 @@ export default function Layout({ children }) {
       </Sticky>
       <Waypoint
         onEnter={removeSticky}
-        // onLeave={setSticky}
         onPositionChange={onWaypointPositionChange}
       />
 

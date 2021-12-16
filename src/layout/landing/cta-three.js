@@ -2,65 +2,68 @@ import { Box, Flex, Text, Grid, Heading, Container } from "theme-ui";
 import React from "react";
 import { Link } from "components/link";
 import BlockTitle from "components/block-title";
+import Fade from "react-reveal/Fade";
 
 const CtaThree = () => {
   return (
     <Box as="section" sx={styles.ctaThree}>
-      <Container>
-        <Flex sx={styles.ctaThree.row}>
-          <Box sx={styles.ctaThree.colTwo}>
-            <Box className="my-auto">
-              <Box sx={styles.ctaThree.content}>
-                <BlockTitle
-                  sx={styles.ctaThree.blockTitle}
-                  tagline="WHY US?"
-                  heading={
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                  }
-                />
-                <Text as="p">
-                  {
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc imperdiet arcu ut blandit euismod. Praesent pellentesque, nunc in lobortis lacinia, nulla nulla dignissim quam, ac tristique arcu nisl vel est"
-                  }
-                </Text>
-                <Link
-                  path="#"
-                  label="Explore details"
-                  variant="buttons.primary"
-                />
+      <Fade bottom>
+        <Container>
+          <Flex sx={styles.ctaThree.row}>
+            <Box sx={styles.ctaThree.colTwo}>
+              <Box className="my-auto">
+                <Box sx={styles.ctaThree.content}>
+                  <BlockTitle
+                    sx={styles.ctaThree.blockTitle}
+                    tagline="WHY US?"
+                    heading={
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                    }
+                  />
+                  <Text as="p">
+                    {
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc imperdiet arcu ut blandit euismod. Praesent pellentesque, nunc in lobortis lacinia, nulla nulla dignissim quam, ac tristique arcu nisl vel est"
+                    }
+                  </Text>
+                  <Link
+                    path="#"
+                    label="Explore details"
+                    variant="buttons.primary"
+                  />
+                </Box>
               </Box>
             </Box>
-          </Box>
-          <Box sx={styles.ctaThree.colOne}>
-            <Grid sx={styles.ctaThree.grid}>
-              <Box sx={styles.ctaThree.box}>
-                <Heading as="h3" sx={styles.ctaThree.color1}>
-                  80K+
-                </Heading>
-                <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
-              </Box>
-              <Box sx={styles.ctaThree.box}>
-                <Heading sx={styles.ctaThree.color2} as="h3">
-                  150+
-                </Heading>
-                <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
-              </Box>
-              <Box sx={styles.ctaThree.box}>
-                <Heading sx={styles.ctaThree.color3} as="h3">
-                  90+
-                </Heading>
-                <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
-              </Box>
-              <Box sx={styles.ctaThree.box}>
-                <Heading sx={styles.ctaThree.color4} as="h3">
-                  & 3M
-                </Heading>
-                <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
-              </Box>
-            </Grid>
-          </Box>
-        </Flex>
-      </Container>
+            <Box sx={styles.ctaThree.colOne}>
+              <Grid sx={styles.ctaThree.grid}>
+                <Box sx={styles.ctaThree.box}>
+                  <Heading as="h3" sx={styles.ctaThree.color1}>
+                    80K+
+                  </Heading>
+                  <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
+                </Box>
+                <Box sx={styles.ctaThree.box}>
+                  <Heading sx={styles.ctaThree.color2} as="h3">
+                    150+
+                  </Heading>
+                  <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
+                </Box>
+                <Box sx={styles.ctaThree.box}>
+                  <Heading sx={styles.ctaThree.color3} as="h3">
+                    90+
+                  </Heading>
+                  <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
+                </Box>
+                <Box sx={styles.ctaThree.box}>
+                  <Heading sx={styles.ctaThree.color4} as="h3">
+                    & 3M
+                  </Heading>
+                  <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
+                </Box>
+              </Grid>
+            </Box>
+          </Flex>
+        </Container>
+      </Fade>
     </Box>
   );
 };

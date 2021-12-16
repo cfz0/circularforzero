@@ -30,30 +30,26 @@ const menuItems = [
 
 export default function Footer() {
   return (
-    <Box as="footer" sx={styles.footer} className="py-7">
-      <Container>
-        <Flex sx={styles.footerInner}>
-          <Flex sx={styles.copyright}>
-            <h1 className="text-2xl font-semibold text-white">
-              CircularForZero
-            </h1>
+    <Box as="footer" sx={styles.footer} className="py-7 px-10">
+      <Flex sx={styles.footerInner}>
+        <Flex sx={styles.copyright} className="lg:items-start items-center">
+          <h1 className="text-2xl font-semibold text-white">CircularForZero</h1>
 
-            <Text as="span">
-              Design &amp; Developed by{" "}
-              <span className="cursor-pointer" style={{ color: "#00897B" }}>
-                Pulkit Gupta{" "}
-              </span>
-            </Text>
-          </Flex>
-          <Flex as="ul" sx={styles.footerNav}>
-            {menuItems?.map((item, index) => (
-              <li key={index}>
-                <Link path={item?.path}>{item?.label}</Link>
-              </li>
-            ))}
-          </Flex>
+          <Text as="span">
+            Design &amp; Developed by{" "}
+            <span className="cursor-pointer" style={{ color: "#00897B" }}>
+              Pulkit Gupta{" "}
+            </span>
+          </Text>
         </Flex>
-      </Container>
+        <Flex as="ul" sx={styles.footerNav}>
+          {menuItems?.map((item, index) => (
+            <li key={index}>
+              <Link path={item?.path}>{item?.label}</Link>
+            </li>
+          ))}
+        </Flex>
+      </Flex>
     </Box>
   );
 }

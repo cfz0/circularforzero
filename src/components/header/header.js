@@ -1,46 +1,53 @@
 /** @jsxImportSource theme-ui */
 
 import { Container, Flex } from "theme-ui";
-import { Link } from "components/link";
 import { Link as ScrollLink } from "react-scroll";
 
 import { DrawerProvider } from "contexts/drawer/drawer.provider";
 import MobileDrawer from "./mobileDrawer";
 import menuItems from "./header.data";
+import { useRouter } from "next/router";
 
 export default function Header({ className }) {
+  const router = useRouter();
+
   return (
     <DrawerProvider>
       <header sx={styles.header} className={className}>
         <Container sx={styles.container}>
-          {/* <Logo /> */}
-
-          <h1 className="text-2xl font-semibold">CircularForZero</h1>
+          <h1
+            onClick={() => router.push("/")}
+            className="text-2xl font-semibold cursor-pointer"
+          >
+            CircularForZero
+          </h1>
 
           <Flex as="nav" sx={styles.nav}>
             {menuItems.map(({ path, label }, i) => (
               <ScrollLink
-                activeClass="active"
                 sx={styles.nav.navLink}
-                to={path}
-                spy={true}
-                smooth={true}
-                offset={-100}
-                duration={500}
                 key={i}
+                onClick={() => router.push(path)}
               >
                 {label}
               </ScrollLink>
             ))}
           </Flex>
 
-          <Link
-            path="/"
+          {/* <Link
+            path="/donate"
             ml={2}
             label="Donate"
             sx={styles.headerBtn}
             variant="buttons.primary"
-          />
+          /> */}
+
+          <button
+            onClick={() => router.push("/donate")}
+            className="bg-[#00897B] text-white px-5 py-2 rounded font-bold hidden lg:block"
+          >
+            Donate
+          </button>
 
           <MobileDrawer />
         </Container>
@@ -53,7 +60,8 @@ const styles = {
   headerBtn: {
     fontSize: "16px",
     fontWeight: 700,
-    backgroundColor: "#D2FFEB",
+    backgroundColor: "#00897B",
+    color: "white",
     display: ["none", null, null, null, "inline-block"],
   },
   header: {

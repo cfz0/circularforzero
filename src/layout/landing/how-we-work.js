@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
+import { Autoplay } from "swiper";
 
 // install Swiper modules
 const HowWeWork = () => {
@@ -21,11 +22,17 @@ const HowWeWork = () => {
         onSlideChange={({ activeIndex }) => setActive(activeIndex)}
         onSwiper={(swip) => setSwiper(swip)}
         style={{ maxWidth: "100vw", padding: "0 30px" }}
+        autoplay={{ delay: 4000 }}
+        modules={[Autoplay]}
       >
         {Array(5)
           .fill(1)
           .map((_, i) => (
-            <SwiperSlide key={i}>
+            <SwiperSlide
+              key={i}
+              onMouseEnter={() => swiper.autoplay.stop()}
+              onMouseLeave={() => swiper.autoplay.start()}
+            >
               <div
                 className={`flex lg:flex-row flex-col justify-between items-center relative border shadow rounded py-10 sm:px-10 px-5 mt-10 ${
                   i > 0 && "ml-10"

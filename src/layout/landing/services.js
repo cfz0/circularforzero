@@ -39,7 +39,7 @@ const data = {
 
 const Services = () => {
   return (
-    <Box as="section" id="services" sx={styles.section}>
+    <Box as="section" id="get-involved" sx={styles.section}>
       <Fade bottom>
         <SectionHead
           slogan="Want to get involved?"

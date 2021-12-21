@@ -33,7 +33,10 @@ export default function Layout({ children }) {
   return (
     <React.Fragment>
       <Sticky enabled={isSticky} innerZ={991}>
-        <Header className={`${isSticky ? "sticky" : "unSticky"}`} />
+        <Header
+          className={`${isSticky ? "sticky" : "unSticky"}`}
+          isWhite={!isSticky}
+        />
       </Sticky>
       <Waypoint
         onEnter={removeSticky}

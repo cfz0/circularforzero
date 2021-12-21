@@ -21,6 +21,7 @@
     "react-scroll": "^1.8.4",
     "react-stickynode": "^4.0.0",
     "react-waypoint": "^10.1.0",
+    "swiper": "^7.3.3",
     "theme-ui": "^0.12.1",
     "typeface-dm-sans": "^1.1.3"
   },

@@ -17,7 +17,13 @@ const About = () => {
       </Head>
 
       <Layout>
-        <div className="bg-[#73E9B3] py-40 flex flex-col items-center px-5">
+        <div
+          className="py-40 flex flex-col items-center px-5"
+          style={{
+            background:
+              "linear-gradient(274.36deg, #00897B 2.99%, rgba(9, 129, 116, 0.44) 98.43%)",
+          }}
+        >
           <h1 className="sm:text-5xl text-4xl text-white font-semibold text-center">
             About Circular Economy
           </h1>

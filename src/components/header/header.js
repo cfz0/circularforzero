@@ -8,7 +8,7 @@ import MobileDrawer from "./mobileDrawer";
 import menuItems from "./header.data";
 import { useRouter } from "next/router";
 
-export default function Header({ className }) {
+export default function Header({ className, isWhite = false }) {
   const router = useRouter();
 
   return (
@@ -17,7 +17,9 @@ export default function Header({ className }) {
         <Container sx={styles.container}>
           <h1
             onClick={() => router.push("/")}
-            className="text-2xl font-semibold cursor-pointer"
+            className={`text-2xl font-semibold cursor-pointer ${
+              isWhite && "text-white"
+            }`}
           >
             CircularForZero
           </h1>

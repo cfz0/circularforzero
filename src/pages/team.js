@@ -2,32 +2,11 @@
 
 import Layout from "components/layout";
 import Head from "next/head";
-import React, { useState } from "react";
 import theme from "theme";
 import { Container, ThemeProvider } from "theme-ui";
 import Fade from "react-reveal/Fade";
 
 const TeamPage = () => {
-  const tabs = [
-    {
-      label: "All",
-      id: "all",
-    },
-    {
-      label: "Board Of Directors",
-      id: "directors",
-    },
-    {
-      label: "Board Of Advisors",
-      id: "advisors",
-    },
-    {
-      label: "Members",
-      id: "members",
-    },
-  ];
-
-  const [tabActive, setTabActive] = useState("all");
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -35,32 +14,27 @@ const TeamPage = () => {
       </Head>
 
       <Layout>
+        <div
+          className="py-40 flex flex-col items-center px-5"
+          style={{
+            background:
+              "linear-gradient(274.36deg, #00897B 2.99%, rgba(9, 129, 116, 0.44) 98.43%)",
+          }}
+        >
+          <h1 className="sm:text-5xl text-4xl text-white font-semibold text-center">
+            Meet our team
+          </h1>
+          <p className="max-w-full lg:max-w-[500px] text-center text-white mt-5">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+            imperdiet arcu ut blandit euismod. Praesent pellentesque, nunc in
+            lobortis lacinia, nulla nulla dignissim{" "}
+          </p>
+        </div>
+
         <div className="overflow-x-hidden">
           <Container sx={styles.container}>
             <div className="mt-32">
-              <h1 className="text-3xl font-semibold ml-5">Meet our Team</h1>
-
-              <div className="flex mt-5 mb-5 ml-5 items-center min-w-screen max-w-screen w-screen overflow-auto pb-5">
-                {tabs.map((tab, i) => (
-                  <div
-                    key={i}
-                    className={`mr-5 border rounded-full px-7 text-center border-[#C6C6C6] py-1 text-sm font-bold hover:bg-primary cursor-pointer transition duration-500 hover:text-white hover:border-primary ${
-                      tabActive === tab.id &&
-                      "bg-primary text-white border-primary"
-                    } 
-                  ${
-                    (tab.id === "advisors" || tab.id === "directors") &&
-                    "min-w-[200px]"
-                  }
-                  `}
-                    onClick={() => setTabActive(tab.id)}
-                  >
-                    <p>{tab.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap mt-5">
+              <div className="flex flex-wrap justify-center ml-10 mt-5">
                 {Array(25)
                   .fill(1)
                   .map((_, i) => (

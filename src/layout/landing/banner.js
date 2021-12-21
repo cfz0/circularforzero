@@ -1,7 +1,10 @@
 import { Box, Flex, Container, Heading, Text } from "theme-ui";
 import React from "react";
+import { useRouter } from "next/router";
 
 const Banner = () => {
+  const router = useRouter();
+
   return (
     <Box as="section" id="banner" sx={styles.banner}>
       <Container sx={styles.banner.container}>
@@ -16,6 +19,12 @@ const Banner = () => {
                 from the victory of the managments that supplies best <br />
                 design system guidelines ever.
               </Text>
+              <button
+                onClick={() => router.push("/about#get-involved")}
+                className="bg-white text-[#00897B] mt-5 px-5 py-2 rounded font-bold hidden lg:block"
+              >
+                Want to get involved?
+              </button>
             </Box>
           </Box>
           <Box sx={styles.banner.col}>
@@ -39,7 +48,10 @@ const styles = {
     overflowX: "hidden",
     paddingTop: ["100px", "180px"],
     paddingBottom: ["0px", null, "140px"],
-    backgroundImage: ["#73E9B3", `url(${"/assets/banner-bg-1-1.png"})`],
+    backgroundImage: [
+      "linear-gradient(274.36deg, #00897B 2.99%, rgba(9, 129, 116, 0.44) 98.43%)",
+      `url(${"/assets/banner-bg-1-1.png"})`,
+    ],
     backgroundPosition: "left top",
     backgroundRepeat: "no-repeat",
     container: {

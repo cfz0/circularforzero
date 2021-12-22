@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 
 import Layout from "components/layout";
-import Services from "layout/landing/services";
+import Services from "layout/services";
 import WorkFlow from "layout/workflow";
 import Head from "next/head";
 import React from "react";

@@ -2,7 +2,7 @@
 import { Box, Container } from "theme-ui";
 import { rgba } from "polished";
 import SubscriptionForm from "components/subscription-form";
-import { SectionHead } from "layout/landing/services";
+import { SectionHead } from "layout/services";
 
 const Subscribe = () => {
   return (

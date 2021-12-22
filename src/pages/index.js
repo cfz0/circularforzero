@@ -1,7 +1,7 @@
 import Layout from "components/layout";
 import Banner from "layout/landing/banner";
 import CtaThree from "layout/landing/cta-three";
-import WorkFlow from "layout/landing/workflow";
+import WorkFlow from "layout/workflow";
 import Head from "next/head";
 import theme from "theme";
 import { ThemeProvider } from "theme-ui";

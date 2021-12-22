@@ -2,7 +2,7 @@
 
 import Layout from "components/layout";
 import Services from "layout/landing/services";
-import WorkFlow from "layout/landing/workflow";
+import WorkFlow from "layout/workflow";
 import Head from "next/head";
 import React from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";

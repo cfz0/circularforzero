@@ -3,26 +3,8 @@ import BlockTitle from "components/block-title";
 import React from "react";
 import Fade from "react-reveal/Fade";
 
-const workflowData = [
-  {
-    title: "Lorem Lispum sir dolor amit",
-    text: "Get your blood tests delivered at home collect a sample from the your blood tests.",
-  },
-  {
-    title: "Lorem Lispum sir dolor amit",
-    text: "Get your blood tests delivered at home collect a sample from the your blood tests.",
-  },
-  {
-    title: "Lorem Lispum sir dolor amit",
-    text: "Get your blood tests delivered at home collect a sample from the your blood tests.",
-  },
-  {
-    title: "Lorem Lispum sir dolor amit",
-    text: "Get your blood tests delivered at home collect a sample from the your blood tests.",
-  },
-];
-
-const WorkFlow = () => {
+const WorkFlow = ({ data }) => {
+  const workflowData = data?.our_approach || [];
   return (
     <Box as="section" sx={styles.workflow} style={{ marginBottom: "50px" }}>
       <Fade bottom>
@@ -30,7 +12,7 @@ const WorkFlow = () => {
           <BlockTitle
             sx={styles.workflow.blockTitle}
             tagline="OUR APPROACH"
-            heading="Lorem Lispum sir dolor"
+            heading={data?.section_Heading}
           />
 
           <Grid gap="50px 54px" columns={4} sx={styles.workflow.grid}>
@@ -39,9 +21,11 @@ const WorkFlow = () => {
                 <Box sx={styles.workflow.iconBox}>{`0${index + 1}`}</Box>
                 <Box sx={styles.workflow.wrapper}>
                   <Heading sx={styles.workflow.wrapper.title}>
-                    {item.title}
+                    {item.heading}
                   </Heading>
-                  <Text sx={styles.workflow.wrapper.subTitle}>{item.text}</Text>
+                  <Text sx={styles.workflow.wrapper.subTitle}>
+                    {item.description}
+                  </Text>
                 </Box>
               </Box>
             ))}

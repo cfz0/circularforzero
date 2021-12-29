@@ -2,7 +2,7 @@ import { Box, Flex, Container, Heading, Text } from "theme-ui";
 import React from "react";
 import { useRouter } from "next/router";
 
-const Banner = () => {
+const Banner = ({ data }) => {
   const router = useRouter();
 
   return (
@@ -11,14 +11,8 @@ const Banner = () => {
         <Flex sx={styles.banner.row}>
           <Box sx={styles.banner.col}>
             <Box sx={styles.banner.content}>
-              <Heading as="h3">
-                Lorem ipsum <br /> dolor sit amet
-              </Heading>
-              <Text as="p">
-                Get your blood tests delivered at let home collect sample <br />
-                from the victory of the managments that supplies best <br />
-                design system guidelines ever.
-              </Text>
+              <Heading as="h3">{data.heading}</Heading>
+              <Text as="p">{data.description}</Text>
               <button
                 onClick={() => router.push("/about#get-involved")}
                 className="bg-white text-[#00897B] mt-5 px-5 py-2 rounded font-bold hidden lg:block"

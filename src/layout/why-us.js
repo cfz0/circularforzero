@@ -4,7 +4,7 @@ import { Link } from "components/link";
 import BlockTitle from "components/block-title";
 import Fade from "react-reveal/Fade";
 
-const CtaThree = () => {
+const WhyUs = ({ data }) => {
   return (
     <Box as="section" sx={styles.ctaThree}>
       <Fade bottom>
@@ -16,15 +16,9 @@ const CtaThree = () => {
                   <BlockTitle
                     sx={styles.ctaThree.blockTitle}
                     tagline="WHY US?"
-                    heading={
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                    }
+                    heading={data.title}
                   />
-                  <Text as="p">
-                    {
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc imperdiet arcu ut blandit euismod. Praesent pellentesque, nunc in lobortis lacinia, nulla nulla dignissim quam, ac tristique arcu nisl vel est"
-                    }
-                  </Text>
+                  <Text as="p">{data.description}</Text>
                   <Link
                     path="#"
                     label="Explore details"
@@ -35,30 +29,14 @@ const CtaThree = () => {
             </Box>
             <Box sx={styles.ctaThree.colOne}>
               <Grid sx={styles.ctaThree.grid}>
-                <Box sx={styles.ctaThree.box}>
-                  <Heading as="h3" sx={styles.ctaThree.color1}>
-                    80K+
-                  </Heading>
-                  <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
-                </Box>
-                <Box sx={styles.ctaThree.box}>
-                  <Heading sx={styles.ctaThree.color2} as="h3">
-                    150+
-                  </Heading>
-                  <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
-                </Box>
-                <Box sx={styles.ctaThree.box}>
-                  <Heading sx={styles.ctaThree.color3} as="h3">
-                    90+
-                  </Heading>
-                  <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
-                </Box>
-                <Box sx={styles.ctaThree.box}>
-                  <Heading sx={styles.ctaThree.color4} as="h3">
-                    & 3M
-                  </Heading>
-                  <Text as="p">{"Lorem ipsum dolor \n sit amet"}</Text>
-                </Box>
+                {data.cards.map((card, i) => (
+                  <Box sx={styles.ctaThree.box} key={i}>
+                    <Heading as="h3" sx={styles.ctaThree[`color${i + 1}`]}>
+                      {card.number}
+                    </Heading>
+                    <Text as="p">{`${card.description}`}</Text>
+                  </Box>
+                ))}
               </Grid>
             </Box>
           </Flex>
@@ -68,7 +46,7 @@ const CtaThree = () => {
   );
 };
 
-export default CtaThree;
+export default WhyUs;
 
 const styles = {
   ctaThree: {

@@ -70,7 +70,7 @@ const styles = {
         fontWeight: "bold",
         position: "relative",
         width: "100%",
-        fontSize: ["28px", "35px", null, "45px", null, "50px", "85px"],
+        fontSize: ["28px", "35px", null, "45px", null, "50px", "69px"],
         maxWidth: ["500px", null, null, null, null, null, "100%"],
         "&:before": {
           content: '""',
@@ -82,7 +82,7 @@ const styles = {
           backgroundRepeat: "no-repeat",
           position: "absolute",
           bottom: "-15px",
-          right: ["15px", null, null, null, null, "140px", "100px"],
+          right: ["15px", null, null, null, null, "140px", "300px"],
           display: ["none", null, null, null, null, "block"],
         },
       },

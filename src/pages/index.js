@@ -9,7 +9,6 @@ import HowWeWork from "layout/how-we-work";
 import CMS from "api/cms";
 
 export default function Home({ data }) {
-  console.log(data);
   return (
     <ThemeProvider theme={theme}>
       <Head>

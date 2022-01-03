@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 
+import CMS from "api/cms";
 import Layout from "components/layout";
 import Services from "layout/services";
 import WorkFlow from "layout/workflow";
@@ -9,7 +10,9 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import theme from "theme";
 import { Container, ThemeProvider } from "theme-ui";
 
-const About = () => {
+const About = ({ data }) => {
+  const attributes = data.data.attributes;
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -25,12 +28,10 @@ const About = () => {
           }}
         >
           <h1 className="sm:text-5xl text-4xl text-white font-semibold text-center">
-            About Circular Economy
+            {attributes.heading}
           </h1>
           <p className="max-w-full lg:max-w-[500px] text-center text-white mt-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-            imperdiet arcu ut blandit euismod. Praesent pellentesque, nunc in
-            lobortis lacinia, nulla nulla dignissim{" "}
+            {attributes.description}
           </p>
         </div>
 
@@ -38,29 +39,12 @@ const About = () => {
           <div className="flex justify-between items-center mt-20 mb-20">
             <div className="lg:mr-28 mr-10">
               <p className="text-primary font-bold uppercase">
-                What is Circular Economy?
+                {attributes.about.sub_heading}
               </p>
               <h1 className="font-bold text-3xl mt-1 mb-2">
-                Lorem Lispum dolor sit
+                {attributes.about.heading}
               </h1>
-              <p className="mt-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-                odio rutrum, fringilla est quis, eleifend lectus. Morbi eu
-                scelerisque nulla. Vestibulum sed aliquam urna. Aliquam eget
-                mauris vitae tellus ultricies vestibulum ut sed ante. Mauris ut
-                volutpat tellus. Quisque fringilla quis dui at auctor. Proin
-                massa tortor, efficitur nec magna in, viverra scelerisque leo.
-                Phasellus orci nibh, ornare non neque nec, pharetra ultricies
-                nibh. Vitae tempus mi. Class aptent taciti sociosqu ad litora
-                torquent per conubia nostra, per inceptos himenaeos. Nulla
-                facilisi. Maecenas id efficitur purus. Duis fringilla quis nisi
-                vel varius. Integer scelerisque nunc vel nulla congue feugiat in
-                quis velit. Mauris non elit pulvinar, ullamcorper lorem in,
-                volutpat erat. Proin eu elit sit amet dui pharetra pharetra at
-                ac dolor. Nullam id ex suscipit, porttitor tortor eu, vulputate
-                enim. Nam pulvinar lacus nec orci eleifend tincidunt. Morbi et
-                purus eget quam viverra tempus.
-              </p>
+              <p className="mt-3">{attributes.about.description}</p>
 
               <div className="flex items-center mt-5">
                 <div className="mr-5 bg-white rounded-full p border shadow cursor-pointer">
@@ -81,8 +65,8 @@ const About = () => {
           </div>
         </Container>
 
-        <WorkFlow />
-        <Services />
+        <WorkFlow data={attributes.our_approach} />
+        <Services data={attributes.get_involved} />
       </Layout>
     </ThemeProvider>
   );
@@ -101,3 +85,18 @@ const styles = {
     },
   },
 };
+
+export async function getStaticProps() {
+  const { data } = await CMS.get("/about-page", {
+    params: {
+      "populate[0]": "about,get_involved,our_approach",
+      "populate[1]": "get_involved.card,our_approach.our_approach",
+      "populate[2]": "get_involved.card.icon",
+    },
+  });
+
+  return {
+    props: { data },
+    revalidate: 60,
+  };
+}

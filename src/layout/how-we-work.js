@@ -46,10 +46,10 @@ const HowWeWork = ({ data }) => {
                 alt=""
               />
               <div className="sm:ml-10 lg:text-left text-center ml-0">
-                <h3 className="font-bold text-primary text-lg lg:mt-0 mt-5">
+                {/* <h3 className="font-bold text-primary text-lg lg:mt-0 mt-5">
                   {item?.sub_heading}
-                </h3>
-                <h1 className="text-3xl font-bold mb-5">{item?.heading}</h1>
+                </h3> */}
+                <h1 className="text-3xl font-bold mb-5">{item?.sub_heading}</h1>
                 <p>{item?.description}</p>
               </div>
               {i !== 0 && i === active && (

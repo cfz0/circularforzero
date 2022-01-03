@@ -3,41 +3,10 @@ import { Box, Grid, Heading, Text } from "theme-ui";
 import Image from "components/image";
 import { LearnMore } from "components/link";
 import Fade from "react-reveal/Fade";
+import { CMS_URL } from "api/cms";
 
-const data = {
-  services: [
-    {
-      id: 1,
-      icon: "/assets/services/1.png",
-      title: "Join open source network",
-      desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc imperdiet arcu ut blandit euismod.`,
-      link: "#",
-    },
-    {
-      id: 2,
-      icon: "/assets/services/2.png",
-      title: "Donate",
-      desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc imperdiet arcu ut blandit euismod.`,
-      link: "#",
-    },
-    {
-      id: 3,
-      icon: "/assets/services/3.png",
-      title: "Advisory",
-      desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc imperdiet arcu ut blandit euismod.`,
-      link: "#",
-    },
-    {
-      id: 4,
-      icon: "/assets/services/4.png",
-      title: "Corporate Social Responsibility",
-      desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc imperdiet arcu ut blandit euismod.`,
-      link: "#",
-    },
-  ],
-};
-
-const Services = () => {
+const Services = ({ data }) => {
+  console.log(data);
   return (
     <Box as="section" id="get-involved" sx={styles.section}>
       <Fade bottom>
@@ -48,19 +17,19 @@ const Services = () => {
 
         <div className="w-full flex justify-center">
           <Grid sx={styles.serviceGrid} className="shadow-2xl border px-10">
-            {data.services.map((service, i) => (
+            {data.card.map((card, i) => (
               <Box sx={styles.service} key={i}>
                 <Box as="figure">
                   <Image
                     width="64"
                     height="64"
-                    src={service.icon}
-                    alt={service.title}
+                    src={`${CMS_URL}${card.icon.data.attributes.url}`}
+                    alt={card.title}
                   />
                 </Box>
-                <Heading as="h4">{service.title}</Heading>
-                <Text as="p">{service.desc}</Text>
-                <LearnMore path={service.link} />
+                <Heading as="h4">{card.heading}</Heading>
+                <Text as="p">{card.description}</Text>
+                <LearnMore path={card.link || "#"} />
               </Box>
             ))}
           </Grid>

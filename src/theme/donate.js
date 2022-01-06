@@ -169,11 +169,11 @@ export const donateTheme = {
     },
     muted: {
       variant: "buttons.default",
-      backgroundColor: "#EDF0F2",
+      backgroundColor: "#fff",
+      border: "2px solid #f2f2f2",
       color: "text",
       ":hover": {
-        backgroundColor: "primary",
-        color: "#fff",
+        // backgroundColor: "#f2f2f2",
       },
     },
     white: {

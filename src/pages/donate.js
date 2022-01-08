@@ -14,7 +14,7 @@ const Donate = () => {
         <title>Donate</title>
       </Head>
 
-      <Layout>
+      <Layout darkBanner={false}>
         <Box as="section" id="home" sx={styles.section}>
           <Container>
             <Box sx={styles.contentWrapper}>

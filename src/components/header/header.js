@@ -7,6 +7,7 @@ import { DrawerProvider } from "contexts/drawer/drawer.provider";
 import MobileDrawer from "./mobileDrawer";
 import menuItems from "./header.data";
 import { useRouter } from "next/router";
+import Logo from "components/logo";
 
 export default function Header({ className, isWhite = false }) {
   const router = useRouter();
@@ -15,14 +16,15 @@ export default function Header({ className, isWhite = false }) {
     <DrawerProvider>
       <header sx={styles.header} className={className}>
         <Container sx={styles.container}>
-          <h1
-            onClick={() => router.push("/")}
-            className={`text-2xl font-semibold cursor-pointer ${
-              isWhite && "text-white"
-            }`}
-          >
-            CircularForZero
-          </h1>
+          <Logo onClick={() => router.push("/")}>
+            <h1
+              className={`text-2xl font-semibold cursor-pointer ${
+                isWhite && "text-white"
+              }`}
+            >
+              CircularForZero
+            </h1>
+          </Logo>
 
           <Flex as="nav" sx={styles.nav}>
             {menuItems.map(({ path, label }, i) => (
@@ -48,7 +50,7 @@ export default function Header({ className, isWhite = false }) {
             onClick={() => router.push("/donate")}
             className="bg-[#00897B] text-white px-5 py-2 rounded font-bold hidden lg:block"
           >
-            Donate
+            Support Us
           </button>
 
           <MobileDrawer />

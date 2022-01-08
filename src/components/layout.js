@@ -9,7 +9,7 @@ import Header from "./header/header";
 import Footer from "./footer";
 import Subscribe from "./subscribe";
 
-export default function Layout({ children }) {
+export default function Layout({ children, darkBanner = true }) {
   const isSticky = useStickyState("isSticky");
   const dispatch = useStickyDispatch();
   const setSticky = useCallback(
@@ -35,7 +35,7 @@ export default function Layout({ children }) {
       <Sticky enabled={isSticky} innerZ={991}>
         <Header
           className={`${isSticky ? "sticky" : "unSticky"}`}
-          isWhite={!isSticky}
+          isWhite={!darkBanner ? false : !isSticky}
         />
       </Sticky>
       <Waypoint

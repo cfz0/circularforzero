@@ -1,55 +1,66 @@
 /** @jsxImportSource theme-ui */
 
-import { Flex, Box, Text, Container } from "theme-ui";
+import { Flex, Box } from "theme-ui";
 import { rgba } from "polished";
-import { Link } from "components/link";
+import Logo from "./logo";
+import Link from "next/link";
 // import Logo from "components/logo";
-
-const menuItems = [
-  {
-    path: "#home",
-    label: "Home",
-  },
-  {
-    path: "#",
-    label: "Team",
-  },
-  {
-    path: "#",
-    label: "Team",
-  },
-  {
-    path: "#",
-    label: "Team",
-  },
-  {
-    path: "#",
-    label: "Team",
-  },
-];
 
 export default function Footer() {
   return (
-    <Box as="footer" sx={styles.footer} className="py-7 px-10">
+    <Box as="footer" sx={styles.footer} className="py-7  sm:px-10 px-5">
       <Flex sx={styles.footerInner}>
-        <Flex sx={styles.copyright} className="lg:items-start items-center">
-          <h1 className="text-2xl font-semibold text-white">CircularForZero</h1>
+        <Flex sx={styles.copyright} className="lg:items-start">
+          <Logo>
+            <h1 className="text-2xl font-semibold text-white">
+              CircularForZero
+            </h1>
+          </Logo>
 
-          <Text as="span">
-            Design &amp; Developed by{" "}
+          <div className="max-w-[350px] mt-2 text-white text-sm opacity-70 mt-5 lg:mt-0">
+            We want to accelerate the countdown to a zero-waste world through a
+            systematic engagement of industry sectors, government, policy think
+            tanks, entrepreneurs, and academic research institutions.
+            {/* Design &amp; Developed by{" "}
             <span className="cursor-pointer" style={{ color: "#00897B" }}>
               Pulkit Gupta{" "}
-            </span>
-          </Text>
+            </span> */}
+          </div>
         </Flex>
-        <Flex as="ul" sx={styles.footerNav}>
-          {menuItems?.map((item, index) => (
-            <li key={index}>
-              <Link path={item?.path}>{item?.label}</Link>
-            </li>
-          ))}
-        </Flex>
+
+        <div className="mt-5 lg:mt-0">
+          <h1 className="text-2xl text-white font-medium">Useful Links</h1>
+          <p className="text-white text-md opacity-70 text-left mt-2">
+            <div>
+              <Link href="/team">Team</Link>
+            </div>
+            <Link href="/about">About</Link>
+            <br />
+            <Link href="/our-programs">Our Programs</Link>
+          </p>
+        </div>
+        <div className="mt-5 lg:mt-0">
+          <h1 className="text-2xl text-white font-medium">Address</h1>
+          <p className="text-white text-sm opacity-70 text-left mt-2">
+            House no 3/6 floor 3rd landmark <br />
+            opp park Single storey ramesh nagar
+            <br />
+            newdelhi West Delhi DL 110015 IN
+          </p>
+        </div>
+        <div className="mt-5 lg:mt-0">
+          <h1 className="text-2xl text-white font-medium">Contact</h1>
+          <p className="text-white opacity-70 mt-2">
+            +91 95995 47095
+            <br />
+            circularforzero@gmail.com
+          </p>
+        </div>
       </Flex>
+      <h1 className="text-white w-full text-center mt-10 -mb-3">
+        Designed and Developed by{" "}
+        <span className="text-primary">Pulkit Gupta</span>
+      </h1>
     </Box>
   );
 }
@@ -59,7 +70,7 @@ const styles = {
     backgroundColor: "#292929",
   },
   footerInner: {
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "space-between",
     flexDirection: ["column", null, null, null, "row"],
   },

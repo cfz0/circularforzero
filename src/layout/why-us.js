@@ -20,7 +20,7 @@ const WhyUs = ({ data }) => {
                   />
                   <Text as="p">{data.description}</Text>
                   <Link
-                    path="#"
+                    path="/programs"
                     label="Explore details"
                     variant="buttons.primary"
                   />

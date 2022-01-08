@@ -12,26 +12,55 @@ import {
 } from "theme-ui";
 import { rgba } from "polished";
 import { useState } from "react";
+import loadScript from "hooks/useScript";
+import { API } from "api/cms";
+import PaymentStatus from "./payment-status";
+import { CircularProgress } from "@material-ui/core";
 
 // import googlePay from "assets/images/icons/google-pay.png";
 
-const presetAmounts = [5, 20, 50, 100];
+const presetAmounts = [10, 200, 1000, 5000];
 
 const DonationForm = () => {
   const [state, setState] = useState({
-    donationType: "onetime",
-    amount: 20,
+    // donationType: "onetime",
+    amount: 10,
     joinCommunity: true,
+    step: 1,
+    name: "",
+    email: "",
+    mobile_phone: "",
+    payment_id: null,
   });
 
-  const handleDonationType = (e) => {
-    setState({
-      ...state,
-      donationType: e.target.value,
-    });
-  };
+  const detailsForm = [
+    {
+      placeholder: "Your Name *",
+      id: "name",
+    },
+    {
+      placeholder: "Email Address *",
+      id: "email",
+    },
+    {
+      placeholder: "Mobile Phone (Optional)",
+      id: "mobile_phone",
+    },
+  ];
+
+  // const handleDonationType = (e) => {
+  //   setState({
+  //     ...state,
+  //     donationType: e.target.value,
+  //   });
+  // };
+
+  const [dialogopen, setDialogOpen] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   const handleAmount = (e) => {
+    setError({ field: "", message: "" });
     setState({
       ...state,
       amount: Number(e.target.value),
@@ -45,16 +74,131 @@ const DonationForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(state);
+  const [error, setError] = useState({ field: "", message: "" });
+
+  const handleClickNext = () => {
+    if (isNaN(state.amount)) {
+      return setError({
+        field: "amount",
+        message: "You can only use numbers",
+      });
+    }
+
+    if (!state.amount) {
+      return setError({
+        field: "amount",
+        message: "Please select or type the amount",
+      });
+    }
+    if (state.amount <= 1) {
+      return setError({
+        field: "amount",
+        message: "The amount must be atleast INR 1.00",
+      });
+    }
+
+    setError({ field: "", message: "" });
+    setState({ ...state, step: 2 });
+  };
+
+  const handleSubmit = async () => {
+    if (!state.name) {
+      return setError({
+        field: "name",
+        message: "Please type your name",
+      });
+    }
+    if (!state.email) {
+      return setError({
+        field: "email",
+        message: "Please type your email",
+      });
+    }
+    setLoading(true);
+
+    try {
+      const order = await API.post("/donate/order", {
+        currency: "INR",
+        amount: Number(state.amount * 100),
+      });
+
+      await initateRazorpay(order);
+      setLoading(false);
+    } catch (error) {
+      alert("An error occured");
+      setLoading(false);
+    }
+  };
+
+  const initateRazorpay = async (order) => {
+    const script = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!script) return null;
+
+    const options = {
+      key: process.env.NEXT_PUBLIC_KEY_ID,
+      amount: parseInt(state.amount * 100),
+      currency: "INR",
+      name: `CircularForZero`,
+      description: ``,
+      // image: "https://www.multi-talented.com/favicon.png",
+      order_id: order.id,
+      handler: async function (response) {
+        setState({
+          ...state,
+          payment_id: response.razorpay_payment_id,
+          step: 1,
+          email: "",
+          mobile_phone: "",
+          name: "",
+        });
+        API.post("/payment/success", {
+          amount: state.amount,
+          payment_id: response.razorpay_payment_id,
+          to: state.email,
+        });
+        setLoading(false);
+        setDialogOpen(true);
+
+        return response;
+      },
+      prefill: {
+        name: state.name,
+        email: state.email,
+        contact: state.mobile_phone,
+      },
+
+      theme: {
+        color: "#00897B",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+
+    paymentObject.on("payment.failed", function ({ error }) {
+      console.log(error);
+      return error;
+    });
+
+    paymentObject.open();
   };
 
   return (
-    <Box sx={styles.formWrapper}>
-      <Heading sx={styles.title}>Donate for the smile of orphans face</Heading>
-      <Box as="form" sx={styles.form} onSubmit={handleSubmit}>
-        <Box sx={styles.radioGroup}>
+    <>
+      <PaymentStatus
+        open={dialogopen}
+        handleClose={() => setDialogOpen(false)}
+        amount={state.amount}
+        payment_id={state.payment_id}
+      />
+      <Box sx={styles.formWrapper}>
+        <Heading sx={styles.title}>
+          Donate for the smile of orphans face
+        </Heading>
+        <Box sx={styles.form}>
+          {/* <Box sx={styles.radioGroup}>
           <Label>
             <Radio
               value="onetime"
@@ -73,46 +217,108 @@ const DonationForm = () => {
             />
             Every Month
           </Label>
-        </Box>
-        <Box sx={styles.presetAmounts}>
-          {presetAmounts.map((amount, i) => (
-            <Label key={i} className={state.amount === amount ? "active" : ""}>
-              <Radio
-                value={amount}
-                name="amount"
-                onChange={handleAmount}
-                defaultChecked={state.amount === amount}
-              />
-              ${amount}
-            </Label>
-          ))}
-        </Box>
-        <Box sx={styles.otherAmount}>
-          <Label htmlFor="other-amount" variant="styles.srOnly">
-            Other Amount
-          </Label>
-          <Input
-            id="other-amount"
-            placeholder="Other Amount"
-            onChange={handleAmount}
-          />
-        </Box>
-        <Box sx={styles.checkbox}>
-          <Label>
-            <Checkbox
-              onChange={handleCheckbox}
-              defaultChecked={state.joinCommunity}
-            />
-            <Text as="span">Want to join with donation community</Text>
-          </Label>
-        </Box>
-        <Box sx={styles.buttonGroup}>
-          <Button variant="primary" sx={styles.submit}>
-            Donate Now
-          </Button>
+        </Box> */}
+          {state.step === 1 ? (
+            <>
+              <Box sx={styles.presetAmounts}>
+                {presetAmounts.map((amount, i) => (
+                  <Label
+                    key={i}
+                    className={state.amount === amount ? "active" : ""}
+                  >
+                    <Radio
+                      value={amount}
+                      name="amount"
+                      onChange={handleAmount}
+                      defaultChecked={state.amount === amount}
+                    />
+                    ₹{amount}
+                  </Label>
+                ))}
+              </Box>
+              <Box sx={styles.input}>
+                <Label htmlFor="other-amount" variant="styles.srOnly">
+                  Other Amount (INR)
+                </Label>
+                <Input
+                  id="other-amount"
+                  placeholder="Other Amount (INR)"
+                  onChange={handleAmount}
+                  sx={error.field === "amount" ? styles.error : {}}
+                />
+                {error.field === "amount" && (
+                  <p className="mt-2 text-[#ff0000]">{error.message}</p>
+                )}
+              </Box>
+              <Box sx={styles.checkbox}>
+                <Label>
+                  <Checkbox
+                    onChange={handleCheckbox}
+                    defaultChecked={state.joinCommunity}
+                  />
+                  <Text as="span">Want to join with donation community</Text>
+                </Label>
+              </Box>
+              <Box sx={styles.buttonGroup}>
+                <Button variant="primary" onClick={handleClickNext}>
+                  Next
+                </Button>
+              </Box>
+            </>
+          ) : (
+            <>
+              {detailsForm.map((item, i) => (
+                <Box sx={styles.input} key={i}>
+                  <Label htmlFor="other-amount" variant="styles.srOnly">
+                    {item.placeholder}
+                  </Label>
+                  <Input
+                    id="other-amount"
+                    placeholder={item.placeholder}
+                    onChange={({ target }) => {
+                      setState({ ...state, [item.id]: target.value });
+                    }}
+                    sx={error.field === item.id ? styles.error : {}}
+                  />
+                  {error.field === item.id && (
+                    <p className="mt-2 text-[#ff0000]">{error.message}</p>
+                  )}
+                </Box>
+              ))}
+              <Box sx={styles.buttonGroup}>
+                <Button
+                  variant="primary"
+                  sx={styles.submit}
+                  onClick={handleSubmit}
+                  style={{
+                    backgroundColor: loading && "rgba(0,0,0,0.12)",
+                    pointerEvents: loading && "none",
+                  }}
+                >
+                  {loading ? (
+                    <CircularProgress
+                      size={24}
+                      style={{ color: "rgba(0,0,0,0.2)" }}
+                    />
+                  ) : (
+                    "Support"
+                  )}
+                </Button>
+                <div className="mt-2">
+                  <Button
+                    variant="muted"
+                    onClick={() => setState({ ...state, step: 1 })}
+                    style={{ pointerEvents: loading && "none" }}
+                  >
+                    Back
+                  </Button>
+                </div>
+              </Box>
+            </>
+          )}
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 
@@ -207,7 +413,7 @@ const styles = {
       },
     },
   },
-  otherAmount: {
+  input: {
     mb: [3, null, null, 4],
     input: {
       minHeight: [45, null, null, 60, 50, 60],
@@ -249,5 +455,8 @@ const styles = {
       mr: 2,
       maxWidth: [23, 25, null, null, 25, "100%"],
     },
+  },
+  error: {
+    border: "1px solid #FF0000",
   },
 };

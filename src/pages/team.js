@@ -11,7 +11,8 @@ const TeamPage = ({ data }) => {
   return (
     <ThemeProvider theme={theme}>
       <Head>
-        <title>CircularForZero</title>
+        <title>Team</title>
+        <link rel="icon" href="/assets/logo.svg"></link>
       </Head>
 
       <Layout>

@@ -12,6 +12,7 @@ const Donate = () => {
     <ThemeProvider theme={donateTheme}>
       <Head>
         <title>Donate</title>
+        <link rel="icon" href="/assets/logo.svg"></link>
       </Head>
 
       <Layout darkBanner={false}>

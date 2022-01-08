@@ -13,6 +13,7 @@ export default function Home({ data }) {
     <ThemeProvider theme={theme}>
       <Head>
         <title>CircularForZero</title>
+        <link rel="icon" href="/assets/logo.svg"></link>
       </Head>
       <Layout>
         <Banner data={data.data.attributes.banner} />

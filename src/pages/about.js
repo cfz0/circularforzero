@@ -17,6 +17,7 @@ const About = ({ data }) => {
     <ThemeProvider theme={theme}>
       <Head>
         <title>About</title>
+        <link rel="icon" href="/assets/logo.svg"></link>
       </Head>
 
       <Layout>

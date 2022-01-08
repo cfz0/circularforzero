@@ -1,12 +1,18 @@
 import { Box, Flex, Container, Heading, Text } from "theme-ui";
 import React from "react";
 import { useRouter } from "next/router";
+import Image from "components/image";
 
 const Banner = ({ data }) => {
   const router = useRouter();
 
   return (
-    <Box as="section" id="banner" sx={styles.banner}>
+    <Box
+      as="section"
+      id="banner"
+      sx={styles.banner}
+      className="sm:max-h-[90vh] max-h-[200vh]"
+    >
       <Container sx={styles.banner.container}>
         <Flex sx={styles.banner.row}>
           <Box sx={styles.banner.col}>
@@ -24,7 +30,7 @@ const Banner = ({ data }) => {
           <Box sx={styles.banner.col}>
             <Box sx={styles.banner.imageBox}>
               <Box sx={styles.banner.imageInner}>
-                {/* <Image src={"/assets/banner-image-1.png"} alt="banner image" /> */}
+                <Image src={"/assets/banner.svg"} alt="banner image" />
                 <div style={{ height: "300px", width: "500px" }} />
               </Box>
             </Box>
@@ -39,7 +45,7 @@ export default Banner;
 
 const styles = {
   banner: {
-    overflowX: "hidden",
+    overflow: "hidden",
     paddingTop: ["100px", "180px"],
     paddingBottom: ["0px", null, "140px"],
     backgroundImage: [
@@ -48,6 +54,7 @@ const styles = {
     ],
     backgroundPosition: "left top",
     backgroundRepeat: "no-repeat",
+    // maxHeight: ["200vh", "90vh"],
     container: {
       maxWidth: ["100%", null, null, null, null, "1240px", "1440px"],
     },
@@ -76,7 +83,7 @@ const styles = {
           content: '""',
           width: ["290px", null, null, null, null, "260px", "381px"],
           height: "15px",
-          backgroundImage: `url(${"/assets/banner-text-line.png"})`,
+          // backgroundImage: `url(${"/assets/banner-text-line.png"})`,
           backgroundPosition: "center center",
           backgroundSize: "100% 100%",
           backgroundRepeat: "no-repeat",
@@ -105,23 +112,23 @@ const styles = {
     },
     imageInner: {
       position: "relative",
-      "&:before": {
-        content: '""',
-        width: "100%",
-        height: "100%",
-        border: "2px solid #FFDC6B",
-        borderRadius: "5px",
-        top: "30px",
-        left: "30px",
-        position: "absolute",
-        zIndex: 2,
-        display: ["none", null, "block"],
-        "@media(max-width: 991px)": {
-          left: "10px",
-          top: "15px",
-          height: "calc(100% - 15px)",
-        },
-      },
+      // "&:before": {
+      //   content: '""',
+      //   width: "100%",
+      //   height: "100%",
+      //   border: "2px solid #FFDC6B",
+      //   borderRadius: "5px",
+      //   top: "30px",
+      //   left: "30px",
+      //   position: "absolute",
+      //   zIndex: 2,
+      //   display: ["none", null, "block"],
+      //   "@media(max-width: 991px)": {
+      //     left: "10px",
+      //     top: "15px",
+      //     height: "calc(100% - 15px)",
+      //   },
+      // },
       "&:after": {
         content: '""',
         width: "302px",

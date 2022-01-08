@@ -101,8 +101,6 @@ const DonationForm = () => {
     setState({ ...state, step: 2 });
   };
 
-  console.log(process.env.NEXT_PUBLIC_KEY_ID);
-
   const handleSubmit = async () => {
     if (!state.name) {
       return setError({

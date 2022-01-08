@@ -50,7 +50,7 @@ const MobileDrawer = () => {
               sx={styles.button}
               onClick={() => router.push("/donate")}
             >
-              Donate Now
+              Support us
             </Button>
           </Box>
         </Box>

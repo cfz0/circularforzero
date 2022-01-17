@@ -30,7 +30,7 @@ const WhyUs = ({ data }) => {
             <Box sx={styles.ctaThree.colOne}>
               <Grid sx={styles.ctaThree.grid}>
                 {data.cards.map((card, i) => (
-                  <Box sx={styles.ctaThree.box} className="px-2" key={i}>
+                  <Box sx={styles.ctaThree.box} className="px-4" key={i}>
                     <Heading as="h3" sx={styles.ctaThree[`color${i + 1}`]}>
                       {card.number}
                     </Heading>

@@ -11,9 +11,9 @@ const Banner = ({ data }) => {
       as="section"
       id="banner"
       sx={styles.banner}
-      className="sm:max-h-[90vh] max-h-[200vh]"
+      className="sm:max-h-[90vh] max-h-[200vh] relative"
     >
-      <Container sx={styles.banner.container}>
+      <Container sx={styles.banner.container} className="relative z-20">
         <Flex sx={styles.banner.row}>
           <Box sx={styles.banner.col}>
             <Box sx={styles.banner.content}>
@@ -54,6 +54,7 @@ const styles = {
     ],
     backgroundPosition: "left top",
     backgroundRepeat: "no-repeat",
+    backgroundSize: "1234px 100%",
     // maxHeight: ["200vh", "90vh"],
     container: {
       maxWidth: ["100%", null, null, null, null, "1240px", "1440px"],

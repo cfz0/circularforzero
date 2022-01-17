@@ -23,7 +23,7 @@ const TeamPage = ({ data }) => {
               "linear-gradient(274.36deg, #00897B 2.99%, rgba(9, 129, 116, 0.44) 98.43%)",
           }}
         >
-          <h1 className="sm:text-5xl text-4xl text-white font-semibold text-center">
+          <h1 className="sm:text-5xl text-4xl text-white font-semibold text-center mt-5">
             {data.data.attributes.title}
           </h1>
           <p className="max-w-full lg:max-w-[500px] text-center text-white mt-5">
@@ -33,7 +33,7 @@ const TeamPage = ({ data }) => {
 
         <div className="overflow-x-hidden">
           <Container sx={styles.container}>
-            <div className="mt-32">
+            <div className="mt-10">
               <div className="flex flex-wrap justify-center ml-10 mt-5">
                 {data.data.attributes.team.map((team, i) => (
                   <Fade key={i} bottom>

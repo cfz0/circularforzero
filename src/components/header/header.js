@@ -32,6 +32,7 @@ export default function Header({ className, isWhite = false }) {
                 sx={styles.nav.navLink}
                 key={i}
                 onClick={() => router.push(path)}
+                style={{ color: isWhite ? "#fff" : "#000" }}
               >
                 {label}
               </ScrollLink>
@@ -103,7 +104,7 @@ const styles = {
     },
     navLink: {
       fontSize: "16px",
-      color: "#02073E",
+      // color: "#02073E",
       fontWeight: "400",
       cursor: "pointer",
       lineHeight: "1.2",

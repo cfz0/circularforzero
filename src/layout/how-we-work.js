@@ -33,7 +33,7 @@ const HowWeWork = ({ data }) => {
             onMouseLeave={() => swiper.autoplay.start()}
           >
             <div
-              className={`flex lg:flex-row flex-col justify-between items-center relative border shadow rounded py-10 sm:px-10 px-5 mt-10 ${
+              className={`flex lg:flex-row flex-col  items-center relative border shadow rounded py-10 sm:px-10 px-5 mt-10 ${
                 i > 0 && "ml-10"
               }`}
             >
@@ -44,6 +44,7 @@ const HowWeWork = ({ data }) => {
               <img
                 src={`${CMS_URL}${item?.image?.data?.attributes?.url}`}
                 alt=""
+                className="w-[300px]"
               />
               <div className="sm:ml-10 lg:text-left text-center ml-0">
                 {/* <h3 className="font-bold text-primary text-lg lg:mt-0 mt-5">

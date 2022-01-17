@@ -58,3 +58,11 @@ const styles = {
     alignItems: "center",
   },
 };
+
+export async function getStaticProps() {
+  return {
+    // props: { data },
+    // revalidate: 60,
+    notFound: true,
+  };
+}

@@ -99,7 +99,6 @@ export async function getStaticProps() {
   return {
     // props: { data },
     // revalidate: 60,
-    // redirect: "/",
     notFound: true,
   };
 }

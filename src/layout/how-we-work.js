@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 import { Autoplay } from "swiper";
-import { CMS_URL } from "api/cms";
+// import { CMS_URL } from "api/cms";
 
 // install Swiper modules
 const HowWeWork = ({ data }) => {
@@ -41,11 +41,42 @@ const HowWeWork = ({ data }) => {
                 <p>0{i + 1}</p>
               </div>
 
-              <img
-                src={`${CMS_URL}${item?.image?.data?.attributes?.url}`}
-                alt=""
-                className="w-[300px]"
-              />
+              {item?.sub_heading === "Reduce and Rethink Design" && (
+                <img
+                  src={`/assets/how-it-works/rethink.png`}
+                  alt=""
+                  className="w-[300px]"
+                />
+              )}
+              {item?.sub_heading === "Reuse" && (
+                <img
+                  src={`/assets/how-it-works/reuse.png`}
+                  alt=""
+                  className="w-[300px]"
+                />
+              )}
+              {item?.sub_heading === "Renew" && (
+                <img
+                  src={`/assets/how-it-works/renew.png`}
+                  alt=""
+                  className="w-[300px]"
+                />
+              )}
+              {item?.sub_heading === "Recyle" && (
+                <img
+                  src={`/assets/how-it-works/recyle.png`}
+                  alt=""
+                  className="w-[300px]"
+                />
+              )}
+              {item?.sub_heading === "Reverse Logistics" && (
+                <img
+                  src={`/assets/how-it-works/logistics.png`}
+                  alt=""
+                  className="w-[300px]"
+                />
+              )}
+
               <div className="sm:ml-10 lg:text-left text-center ml-0">
                 {/* <h3 className="font-bold text-primary text-lg lg:mt-0 mt-5">
                   {item?.sub_heading}

@@ -84,8 +84,8 @@ export async function getStaticProps() {
   });
 
   return {
-    // props: { data },
-    // revalidate: 60,
-    notFound: true,
+    props: { data },
+    revalidate: 60,
+    // notFound: true,
   };
 }

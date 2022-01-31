@@ -59,10 +59,10 @@ const styles = {
   },
 };
 
-export async function getStaticProps() {
-  return {
-    // props: { data },
-    // revalidate: 60,
-    notFound: true,
-  };
-}
+// export async function getStaticProps() {
+//   return {
+//     // props: { data },
+//     // revalidate: 60,
+//     // notFound: true,
+//   };
+// }

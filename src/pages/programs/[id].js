@@ -6,7 +6,7 @@ import { Link } from "react-scroll";
 import theme from "theme";
 import { Container, ThemeProvider } from "theme-ui";
 
-const Program = () => {
+const Program = ({ data }) => {
   const tabs = [
     {
       label: "Description",
@@ -36,13 +36,11 @@ const Program = () => {
           >
             <h1 className="sm:text-5xl text-4xl text-white font-semibold text-center">
               {/* {attributes.heading} */}
-              Lorem Lispum
+              {data.data.attributes.name}
             </h1>
             <p className="max-w-full lg:max-w-[500px] text-center text-white mt-5">
               {/* {attributes.description} */}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              imperdiet arcu ut blandit euismod. Praesent pellentesque, nunc in
-              lobortis lacinia, nulla nulla dignissim
+              {data.data.attributes.short_description}
             </p>
           </div>
           <div className="relative mb-20">
@@ -73,25 +71,22 @@ const Program = () => {
                 id="description"
               >
                 <div className="mt-10 mr-10 max-w-[700px] text-center lg:text-left">
-                  <h1 className="text-3xl font-medium">Lorem Lispum</h1>
+                  <h1 className="text-3xl font-medium">
+                    {data.data.attributes.name}
+                  </h1>
                   <p className="mt-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    sit amet nunc efficitur dui molestie consequat eget eu ante.
-                    Mauris at accumsan leo. Mauris nec aliquam purus, et
-                    facilisis tortor. Sed arcu nisl, pellentesque at augue quis,
-                    volutpat gravida tellus. Donec varius lorem nec lectus
-                    efficitur ultrices. Etiam efficitur elit libero, sed feugiat
-                    justo interdum id. Suspendisse vitae placerat risus. Donec
-                    auctor justo fringilla, ultricies urna non, venenatis nisl.
-                    Donec facilisis eleifend leo, a condimentum arcu tincidunt
-                    sed. Praesent facilisis luctus efficitur. Pellentesque
-                    suscipit dui quis ipsum consectetur convallis. Sed vitae
-                    magna a sapien vulputate iaculis
+                    {data.data.attributes.long_description}
                   </p>
 
-                  <button className="bg-[#00897B] text-white mt-2 px-5 py-1 rounded font-medium lg:mb-0 mb-5">
-                    Join Program
-                  </button>
+                  <a
+                    href={data.data.attributes.join_link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="bg-[#00897B] text-white mt-2 px-5 py-1 rounded font-medium lg:mb-0 mb-5">
+                      Join Program
+                    </button>
+                  </a>
                 </div>
 
                 <div className="max-w-[500px] h-[250px] bg-[#c6c6c6] w-full" />
@@ -102,20 +97,11 @@ const Program = () => {
                 <div className="w-full h-[250px] bg-[#c6c6c6] rounded"></div>
                 <div className="w-full mt-5">
                   <ol>
-                    <li>
-                      1. Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit. Sed sit amet nunc efficitur dui molestie
-                    </li>
-                    <li>
-                      2. Sed arcu nisl, pellentesque at augue quis, volutpat
-                      gravida tellus. Donec varius lorem nec lectus efficitur
-                      ultrices.
-                    </li>
-                    <li>
-                      3. Nullam sit amet blandit felis. Suspendisse dapibus quam
-                      velit, a bibendum turpis consequat ac. Praesent vel
-                      vulputate dui, in faucibus arcu. Maecenas
-                    </li>
+                    {data.data.attributes.how_it_works.map((txt, i) => (
+                      <li key={txt.id}>
+                        {i + 1}. {txt.text}
+                      </li>
+                    ))}
                   </ol>
                 </div>
               </div>

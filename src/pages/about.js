@@ -5,7 +5,6 @@ import Layout from "components/layout";
 import Services from "layout/services";
 import WorkFlow from "layout/workflow";
 import Head from "next/head";
-import React from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import theme from "theme";
 import { Container, ThemeProvider } from "theme-ui";
@@ -92,13 +91,12 @@ export async function getStaticProps() {
     params: {
       "populate[0]": "about,get_involved,our_approach",
       "populate[1]": "get_involved.card,our_approach.our_approach",
-      "populate[2]": "get_involved.card.icon",
+      // "populate[2]": "get_involved.card.icon",
     },
   });
 
   return {
     props: { data },
     revalidate: 60,
-    // notFound: true,
   };
 }

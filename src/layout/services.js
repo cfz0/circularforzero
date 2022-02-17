@@ -23,7 +23,8 @@ const Services = ({ data }) => {
                   <Image
                     width="64"
                     height="64"
-                    src={`${CMS_URL}${card.icon.data.attributes.url}`}
+                    // src={`${CMS_URL}${card.icon.data.attributes.url}`}
+                    src=""
                     alt={card.title}
                   />
                 </Box>

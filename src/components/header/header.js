@@ -49,7 +49,7 @@ export default function Header({ className, isWhite = false }) {
 
           <button
             onClick={() => router.push("/donate")}
-            className="bg-[#00897B] text-white px-5 py-2 rounded font-bold hidden lg:block"
+            className="bg-[#00897B] text-white px-5 py-2 rounded font-bold hidden lg:block ml-20"
           >
             Support Us
           </button>

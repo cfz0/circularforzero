@@ -8,6 +8,7 @@ import Fade from "react-reveal/Fade";
 import CMS from "api/cms";
 
 const TeamPage = ({ data }) => {
+  console.log(data);
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -38,14 +39,21 @@ const TeamPage = ({ data }) => {
                 {data.data.attributes.team.map((team, i) => (
                   <Fade key={i} bottom>
                     <div className="mr-10 mb-10 hover:shadow-xl px-5 transition duration-200 cursor-pointer rounded-lg hover:border-[#ECECEC] border border-[white] py-5">
-                      <div className="bg-[#c6c6c6] h-[300px] w-[240px]"></div>
+                      {!team.profile_pic ? (
+                        <div className="bg-[#c6c6c6] h-[300px] w-[240px]"></div>
+                      ) : (
+                        <img
+                          src={team.profile_pic}
+                          className="h-[300px] w-[240px]"
+                        />
+                      )}
                       <h1 className="mt-2 font-semibold text-2xl ">
                         {team.name}
                       </h1>
 
-                      <div className="flex justify-between">
+                      <div className="flex flex-col">
                         <p className="opacity-70">{team.sub_title}</p>
-                        <p className="text-primary font-semibold">
+                        <p className="text-primary -mt-2 font-semibold">
                           {team.role}
                         </p>
                       </div>

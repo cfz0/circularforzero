@@ -11,4 +11,8 @@ export default [
     path: "/about",
     label: "About",
   },
+  {
+    path: "/programs",
+    label: "Programs",
+  },
 ];

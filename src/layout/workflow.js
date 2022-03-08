@@ -6,7 +6,7 @@ import Fade from "react-reveal/Fade";
 const WorkFlow = ({ data }) => {
   const workflowData = data?.our_approach || [];
   return (
-    <Box as="section" sx={styles.workflow}>
+    <Box as="section" sx={styles.workflow} id="approach">
       <Fade bottom>
         <Container>
           <BlockTitle

@@ -8,6 +8,7 @@ import Head from "next/head";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import theme from "theme";
 import { Container, ThemeProvider } from "theme-ui";
+import { Link as ScrollLink } from "react-scroll";
 
 const About = ({ data }) => {
   const attributes = data.data.attributes;
@@ -35,8 +36,42 @@ const About = ({ data }) => {
           </p>
         </div>
 
+        <div className="w-full bg-white shadow-lg py-3 sticky top-[75px] z-20 ">
+          <Container sx={styles.container}>
+            <div className="flex items-center">
+              {[
+                {
+                  label: "Overview",
+                  path: "overview",
+                },
+                {
+                  label: "Our Approach",
+                  path: "approach",
+                },
+                {
+                  label: "Get Involved",
+                  path: "get-involved",
+                },
+              ].map((link, i) => (
+                <ScrollLink
+                  key={i}
+                  className="mr-8 cursor-pointer text-black"
+                  to={link.path}
+                  offset={-150}
+                  smooth
+                >
+                  <p>{link.label}</p>
+                </ScrollLink>
+              ))}
+            </div>
+          </Container>
+        </div>
+
         <Container sx={styles.container}>
-          <div className="flex justify-between items-center mt-20 mb-20">
+          <div
+            className="flex justify-between items-center mt-20 mb-20"
+            id="overview"
+          >
             <div className="lg:mr-28 mr-10">
               <p className="text-primary font-bold uppercase">
                 {attributes.about.sub_heading}

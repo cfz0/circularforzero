@@ -3,17 +3,13 @@ import { Box, Grid, Heading, Text } from "theme-ui";
 import Image from "components/image";
 import { LearnMore } from "components/link";
 import Fade from "react-reveal/Fade";
-import { CMS_URL } from "api/cms";
 
 const Services = ({ data }) => {
   console.log(data);
   return (
     <Box as="section" id="get-involved" sx={styles.section}>
       <Fade bottom>
-        <SectionHead
-          slogan="Want to get involved?"
-          title="Lorem ipsum dolor sit amet"
-        />
+        <SectionHead title={data.sub_heading} description={data.heading} />
 
         <div className="w-full flex justify-center">
           <Grid sx={styles.serviceGrid} className="shadow-2xl border px-10">
@@ -30,7 +26,7 @@ const Services = ({ data }) => {
                 </Box>
                 <Heading as="h4">{card.heading}</Heading>
                 <Text as="p">{card.description}</Text>
-                <LearnMore path={card.link || "#"} />
+                <LearnMore path={card.link} />
               </Box>
             ))}
           </Grid>

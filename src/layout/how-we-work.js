@@ -18,13 +18,21 @@ const HowWeWork = ({ data }) => {
       </h1>
 
       <Swiper
-        slidesPerView={1.03}
+        slidesPerView={1}
         pagination={{ clickable: true }}
         onSlideChange={({ activeIndex }) => setActive(activeIndex)}
         onSwiper={(swip) => setSwiper(swip)}
         style={{ maxWidth: "100vw", padding: "0 30px" }}
         autoplay={{ delay: 4000 }}
         modules={[Autoplay]}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+          },
+          900: {
+            slidesPerView: 4,
+          },
+        }}
       >
         {data.map((item, i) => (
           <SwiperSlide
@@ -33,7 +41,7 @@ const HowWeWork = ({ data }) => {
             onMouseLeave={() => swiper.autoplay.start()}
           >
             <div
-              className={`flex lg:flex-row flex-col  items-center relative border shadow rounded py-10 sm:px-10 px-5 mt-10 ${
+              className={`flex flex-col  items-center relative border shadow rounded py-10 sm:px-10 px-5 mt-10 max-w-[300px] min-h-[550px] ${
                 i > 0 && "ml-10"
               }`}
             >
@@ -77,10 +85,7 @@ const HowWeWork = ({ data }) => {
                 />
               )}
 
-              <div className="sm:ml-10 lg:text-left text-center ml-0">
-                {/* <h3 className="font-bold text-primary text-lg lg:mt-0 mt-5">
-                  {item?.sub_heading}
-                </h3> */}
+              <div className="text-center ml-0">
                 <h1 className="text-3xl font-bold mb-5">{item?.sub_heading}</h1>
                 <p>{item?.description}</p>
               </div>

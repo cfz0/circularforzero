@@ -22,11 +22,15 @@ export function Link({ path, children, label, ...rest }) {
 
 export function LearnMore({ path, label, ...rest }) {
   return (
-    <NextLink href={path}>
-      <A sx={styles.learnMore} {...rest}>
-        {label ?? "Learn More"} <IoIosArrowForward size="16px" />
-      </A>
-    </NextLink>
+    <A
+      sx={styles.learnMore}
+      {...rest}
+      href={path}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {label ?? "Learn More"} <IoIosArrowForward size="16px" />
+    </A>
   );
 }
 

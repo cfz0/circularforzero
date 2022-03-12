@@ -3,7 +3,6 @@
 import Layout from "components/layout";
 import Head from "next/head";
 import { Box, Container, ThemeProvider } from "theme-ui";
-import Image from "components/image";
 import DonationForm from "components/donation-form";
 import { donateTheme } from "theme/donate";
 
@@ -21,11 +20,11 @@ const Donate = () => {
             <Box sx={styles.contentWrapper}>
               <DonationForm />
               <Box as="figure" sx={styles.illustration}>
-                <Image
-                  src="/assets/donate.png"
-                  width="836"
-                  height="458"
+                <img
+                  src="/assets/donate.svg"
                   alt="illustration"
+                  style={{ width: "700px" }}
+                  className="xl:ml-[100px]"
                 />
               </Box>
             </Box>

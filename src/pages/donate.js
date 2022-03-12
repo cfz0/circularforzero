@@ -21,7 +21,7 @@ const Donate = () => {
               <DonationForm />
               <Box as="figure" sx={styles.illustration}>
                 <img
-                  src="/assets/donate.svg"
+                  src="/assets/donate.png"
                   alt="illustration"
                   style={{ width: "700px" }}
                   className="xl:ml-[100px]"

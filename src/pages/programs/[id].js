@@ -13,7 +13,7 @@ const Program = ({ data }) => {
       to: "description",
     },
     {
-      label: "How it works",
+      label: "Objectives",
       to: "how-it-works",
     },
   ];
@@ -74,8 +74,13 @@ const Program = ({ data }) => {
                   <h1 className="text-3xl font-medium">
                     {data.data.attributes.name}
                   </h1>
-                  <p className="mt-2">
-                    {data.data.attributes.long_description}
+                  <p
+                    className="mt-2"
+                    dangerouslySetInnerHTML={{
+                      __html: data.data.attributes.long_description,
+                    }}
+                  >
+                    {/* {} */}
                   </p>
 
                   <a
@@ -93,7 +98,7 @@ const Program = ({ data }) => {
               </div>
 
               <div className="mt-20 flex flex-col items-center">
-                <h1 className="text-3xl font-medium mb-5">How it works?</h1>
+                <h1 className="text-3xl font-medium mb-5">Objectives</h1>
                 <div className="w-full h-[250px] bg-[#c6c6c6] rounded"></div>
                 <div className="w-full mt-5">
                   <ol>

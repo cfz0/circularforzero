@@ -28,13 +28,12 @@ const Programs = ({ data }) => {
           >
             <h1 className="sm:text-5xl text-4xl text-white font-semibold text-center">
               {/* {attributes.heading} */}
-              Our Programs
+              Our Projects
             </h1>
             <p className="max-w-full lg:max-w-[500px] text-center text-white mt-5">
               {/* {attributes.description} */}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              imperdiet arcu ut blandit euismod. Praesent pellentesque, nunc in
-              lobortis lacinia, nulla nulla dignissim
+              Our projects are focused on promotion of circular economy principles in industry and
+              implementation of action plans by engaging key stakeholders from multiple industries
             </p>
           </div>
 

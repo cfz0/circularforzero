@@ -42,10 +42,7 @@ export default function Footer() {
         <div className="mt-5 lg:mt-0">
           <h1 className="text-2xl text-white font-medium">Address</h1>
           <p className="text-white text-sm opacity-70 text-left mt-2">
-            House no 3/6 floor 3rd landmark <br />
-            opp park Single storey ramesh nagar
-            <br />
-            newdelhi West Delhi DL 110015 IN
+            3/6 Ramesh Nagar New Delhi-110015 IN
           </p>
         </div>
         <div className="mt-5 lg:mt-0">
@@ -58,8 +55,8 @@ export default function Footer() {
         </div>
       </Flex>
       <h1 className="text-white w-full text-center mt-10 -mb-3">
-        Designed and Developed by{" "}
-        <span className="text-primary">Pulkit Gupta</span>
+        &copy; Copyright 2022{" "}
+        <span className="text-primary">circularforzero.org</span>
       </h1>
     </Box>
   );

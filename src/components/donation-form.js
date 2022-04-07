@@ -256,7 +256,7 @@ const DonationForm = () => {
                     onChange={handleCheckbox}
                     defaultChecked={state.joinCommunity}
                   />
-                  <Text as="span">Want to join with donation community</Text>
+                  <Text as="span">Want to subscribe our newsletter</Text>
                 </Label>
               </Box>
               <Box sx={styles.buttonGroup}>

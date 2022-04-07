@@ -195,7 +195,7 @@ const DonationForm = () => {
       />
       <Box sx={styles.formWrapper}>
         <Heading sx={styles.title}>
-          Donate for the smile of orphans face
+          Support us to promote circular economy
         </Heading>
         <Box sx={styles.form}>
           {/* <Box sx={styles.radioGroup}>

@@ -7,11 +7,11 @@ import theme from "theme";
 import { ThemeProvider } from "theme-ui";
 import HowWeWork from "layout/how-we-work";
 import CMS from "api/cms";
-import { Dialog } from "@material-ui/core";
-import { useState } from "react";
+// import { Dialog } from "@material-ui/core";
+// import { useState } from "react";
 
 export default function Home({ data }) {
-  const [dialogOpen, setDialogOpen] = useState(true);
+  // const [dialogOpen, setDialogOpen] = useState(true);
 
   return (
     <ThemeProvider theme={theme}>
@@ -20,7 +20,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/assets/logo.svg"></link>
       </Head>
       <Layout>
-        <Dialog open={dialogOpen}>
+        {/* <Dialog open={dialogOpen}>
           <div className="px-10 py-5 flex flex-col items-center justify-center">
             <p className="text-2xl font-medium">
               The site is under development
@@ -34,7 +34,7 @@ export default function Home({ data }) {
               Close
             </button>
           </div>
-        </Dialog>
+        </Dialog> */}
         <Banner data={data.data.attributes.banner} />
         <HowWeWork data={data.data.attributes.how_it_works} />
         <WhyUs data={data.data.attributes.why_us} />

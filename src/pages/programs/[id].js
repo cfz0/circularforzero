@@ -94,7 +94,9 @@ const Program = ({ data }) => {
                   </a>
                 </div>
 
-                <div className="max-w-[500px] h-[250px] bg-[#c6c6c6] w-full" />
+                <div className="max-w-[500px] h-[250px] bg-[#c6c6c6] w-full">
+                  <img className="object-cover w-full h-full" src={data.data?.attributes?.project_image_link} alt="img" />
+                </div>
               </div>
 
               <div className="mt-20 flex flex-col items-center">

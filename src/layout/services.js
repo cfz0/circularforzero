@@ -5,7 +5,6 @@ import { LearnMore } from "components/link";
 import Fade from "react-reveal/Fade";
 
 const Services = ({ data }) => {
-  console.log(data);
   return (
     <Box as="section" id="get-involved" sx={styles.section}>
       <Fade bottom>
@@ -19,8 +18,7 @@ const Services = ({ data }) => {
                   <Image
                     width="64"
                     height="64"
-                    // src={`${CMS_URL}${card.icon.data.attributes.url}`}
-                    src=""
+                    src={card.icon}
                     alt={card.title}
                   />
                 </Box>

@@ -45,7 +45,9 @@ const Programs = ({ data }) => {
                     className="rounded border px-5 py-5 flex items-start flex-col sm:flex-row"
                     key={i}
                   >
-                    <div className="min-w-[188px] w-full sm:w-auto rounded h-[236px] bg-[#c6c6c6]" />
+                    <div className="min-w-[188px] w-full sm:w-auto rounded h-[236px] bg-[#c6c6c6]">
+                      <img src={item.attributes?.project_image_link} alt="" />
+                    </div>
                     <div className="sm:ml-5 ml-0 sm:mt-0 mt-5 text-center sm:text-left">
                       <h1 className="text-xl font-semibold">
                         {item?.attributes?.name}

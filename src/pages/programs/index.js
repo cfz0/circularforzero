@@ -32,8 +32,9 @@ const Programs = ({ data }) => {
             </h1>
             <p className="max-w-full lg:max-w-[500px] text-center text-white mt-5">
               {/* {attributes.description} */}
-              Our projects are focused on promotion of circular economy principles in industry and
-              implementation of action plans by engaging key stakeholders from multiple industries
+              Our projects are focused on promotion of circular economy
+              principles in industry and implementation of action plans by
+              engaging key stakeholders from multiple industries
             </p>
           </div>
 
@@ -45,9 +46,11 @@ const Programs = ({ data }) => {
                     className="rounded border px-5 py-5 flex items-start flex-col sm:flex-row"
                     key={i}
                   >
-                    <div className="min-w-[188px] w-full sm:w-auto rounded h-[236px] bg-[#c6c6c6]">
-                      <img src={item.attributes?.project_image_link} alt="" />
-                    </div>
+                    <img
+                      className="min-w-[188px] w-full sm:w-auto rounded h-[236px]"
+                      src={item.attributes?.project_image_link}
+                      alt=""
+                    />
                     <div className="sm:ml-5 ml-0 sm:mt-0 mt-5 text-center sm:text-left">
                       <h1 className="text-xl font-semibold">
                         {item?.attributes?.name}

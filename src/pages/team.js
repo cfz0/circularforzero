@@ -8,7 +8,6 @@ import Fade from "react-reveal/Fade";
 import CMS from "api/cms";
 
 const TeamPage = ({ data }) => {
-  console.log(data);
   return (
     <ThemeProvider theme={theme}>
       <Head>

@@ -70,7 +70,7 @@ const Program = ({ data }) => {
                 className="flex items-center justify-between lg:flex-row flex-col "
                 id="description"
               >
-                <div className="mt-10 mr-10 max-w-[700px] text-center lg:text-left">
+                <div className="mt-10 md:mr-10 max-w-[700px] text-center lg:text-left">
                   <h1 className="text-3xl font-medium">
                     {data.data.attributes.name}
                   </h1>
@@ -94,12 +94,17 @@ const Program = ({ data }) => {
                   </a>
                 </div>
 
-                <div className="max-w-[500px] h-[250px] bg-[#c6c6c6] w-full" />
+                <div className="max-w-[500px] h-[250px] bg-[#c6c6c6] w-full">
+                  <img
+                    className="object-cover w-full h-full"
+                    src={data.data?.attributes?.project_image_link}
+                    alt="img"
+                  />
+                </div>
               </div>
 
               <div className="mt-20 flex flex-col items-center">
                 <h1 className="text-3xl font-medium mb-5">Objectives</h1>
-                <div className="w-full h-[250px] bg-[#c6c6c6] rounded"></div>
                 <div className="w-full mt-5">
                   <ol>
                     {data.data.attributes.how_it_works.map((txt, i) => (

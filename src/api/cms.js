@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const CMS_URL = "https://cms-circularforzero.herokuapp.com";
+// export const CMS_URL = "http://localhost:1337";
 
 const CMS = axios.create({
   baseURL: `${CMS_URL}/api`,

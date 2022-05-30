@@ -20,11 +20,16 @@ const Banner = ({ data }) => {
               <Heading as="h3">{data.heading}</Heading>
               <Text as="p">{data.description}</Text>
               <button
+                onClick={() => router.push("/programs/2")}
+                className="bg-white text-[#00897B] mt-5 px-5 py-2 rounded font-bold hidden lg:block">
+                Download Report
+              </button>
+               <button
                 onClick={() => router.push("/about#get-involved")}
-                className="bg-white text-[#00897B] mt-5 px-5 py-2 rounded font-bold hidden lg:block"
-              >
+                className="bg-white text-[#00897B] mt-5 px-5 py-2 rounded font-bold hidden lg:block">
                 Want to get involved?
               </button>
+
             </Box>
           </Box>
           <Box sx={styles.banner.col}>
